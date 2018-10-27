@@ -1,0 +1,490 @@
+﻿Build1=Default,b4a.example
+File1=notificon.png
+File2=pricedown.ttf
+File3=Rage Italic.ttf
+File4=santa.png
+File5=skulls.png
+File6=snow.png
+File7=snowgray.png
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Default Group
+Group=Default Group
+IconFile=
+Library1=core
+Library2=json
+Library3=javaobject
+Library4=reflection
+Library5=fusedlocationprovider
+Library6=okhttputils2
+Library7=gps
+Library8=geocoder
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="21"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>~\n~	~\n~<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>	~\n~	)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~'End of default text.~\n~AddApplicationText(<meta-data~\n~	android:name="com.google.android.gms.version"~\n~	android:value="@integer/google_play_services_version" />)~\n~	~\n~'	you must add one of these two permissions~\n~'	the permission you add will define the accuracy of location updates~\n~AddPermission(android.permission.ACCESS_FINE_LOCATION)~\n~'	AddPermission(android.permission.ACCESS_COARSE_LOCATION)~\n~~\n~~\n~'SetActivityAttribute(Transparent, android:theme, "@android:style/Theme.Translucent")
+Module1=Starter
+Module2=oService
+NumberOfFiles=7
+NumberOfLibraries=8
+NumberOfModules=2
+Version=8.3
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: GTA:GPS
+	#VersionCode: 1
+	#VersionName: 1.1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+	
+	#AdditionalJar: com.android.support:support-v4
+	#AdditionalJar: com.google.android.gms:play-services-location
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+
+	Dim Timer1 As Timer
+	
+	Private FusedLocationProvider1 As FusedLocationProvider
+	Private LastLocation As Location
+
+	Dim Geocoder1 As Geocoder
+	
+	Dim strLocation As String
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	'These variables can only be accessed from this module.
+	Dim lblStars As Label
+	Dim RadioAdditional(3) As RadioButton
+	
+	Dim IVSnow(5) As ImageView
+	
+	Dim num_gifs_snow As Int=17
+	Dim bb_snow(num_gifs_snow) As Bitmap
+	Dim bb_snow_gray As Bitmap
+	Dim index_snow As Int=0
+	
+	Dim num_gifs_santa As Int=8
+	Dim bb_santa(num_gifs_santa) As Bitmap
+	Dim IV1 As ImageView
+	Dim index_santa As Int=0
+
+	
+	Dim num_gifs_skull As Int=12
+	Dim bb_skulls(num_gifs_skull) As Bitmap
+	Dim IV2 As ImageView
+	Dim index_skull As Int=0
+
+End Sub
+
+
+Sub Activity_Create(FirstTime As Boolean)
+
+	If FirstTime=True Then
+
+		FusedLocationProvider1.Initialize("FusedLocationProvider1")
+
+		Geocoder1.Initialize3("Geocoder1", "en", "AU")
+
+		Starter.NUM_STARS=3
+		Starter.ADDITIONAL=0
+		Starter.SOUND=False
+	End If
+
+'	
+'	Activity.Color=Colors.DarkGray
+'	
+'	'Number of Stars 1...5
+'	lblStars.Initialize("")
+'	lblStars.Text="Snow flakes:"
+'	lblStars.TextSize=16
+'	lblStars.TextColor=Colors.White
+'	Activity.AddView(lblStars,20dip,60dip,40%X-20dip,20dip)
+'
+'	lblLocation.Initialize("")
+'	Dim MyFont As Typeface
+'	MyFont = Typeface.LoadFromAssets("Rage Italic.ttf")
+'	lblLocation.Typeface = MyFont
+'
+'	Dim wwgif,hhgif,wwb,hhb As Int
+'	wwgif=88:hhgif=82
+'	wwb=44dip:hhb=41dip
+'	Dim bb0 As Bitmap
+'	bb0.Initialize(File.DirAssets,"snow.png")
+'	Dim cv As Canvas
+'	Dim Rect1 As Rect: Rect1.initialize(0,0,wwb,hhb)
+'	Dim SrcRect As Rect
+'	For k=0 To num_gifs_snow-1
+'		SrcRect.Initialize(k*wwgif,0,(k+1)*wwgif,hhgif)
+'		bb_snow(k).InitializeMutable(wwb,hhb)
+'		cv.Initialize2(bb_snow(k))
+'		cv.DrawBitmap(bb0,SrcRect,Rect1)
+'		cv.DrawText("test",100dip,100dip,MyFont,30,Colors.Red,"LEFT")
+'		
+'	Next
+'	bb_snow_gray.InitializeMutable(wwb,hhb)
+'	bb0.Initialize(File.DirAssets,"snowgray.png")
+'	SrcRect.Initialize(0,0,wwgif,hhgif)
+'	cv.Initialize2(bb_snow_gray)
+'	cv.DrawBitmap(bb0,SrcRect,Rect1)
+'	cv.DrawText("test",100dip,100dip,Typeface.DEFAULT_BOLD,30,Colors.Red,"LEFT")
+	'bb_snow_gray.Initialize(File.DirAssets,"snowgray.png")
+	
+'	Dim k As Int
+'	For k=0 To 4
+'		IVSnow(k).Initialize("IVSnow")
+'		IVSnow(k).Tag=k
+'		IVSnow(k).Gravity=Gravity.FILL
+'		Activity.AddView(IVSnow(k),40%X+k*wwb,lblStars.Top+(lblStars.Height/2)-(hhb/2) ,wwb,hhb)
+'		IVSnow(k).Bitmap=bb_snow(k)
+'	Next
+
+	'Activity.AddView(lblLocation,40%X+k*wwb,lblStars.Top+(lblStars.Height/2)-(hhb/2) ,wwb,hhb)
+	
+'	Dim LblExtra As Label
+'	LblExtra.Initialize("")
+'	LblExtra.Text="Extra element:"
+'	LblExtra.TextColor=Colors.White
+'	LblExtra.TextSize=16
+'	Activity.AddView(LblExtra,20dip,110dip,50%X-20dip,20dip)
+'	
+'	'Extra character: None, Santa, SpiderSkull
+'	RadioAdditional(0).Initialize("Radiobutton0")
+'	RadioAdditional(0).Text="None"
+'	RadioAdditional(0).TextSize=14
+'	RadioAdditional(1).Initialize("RadioButton1")
+'	RadioAdditional(1).Text="Santa"
+'	RadioAdditional(1).TextSize=14
+'	RadioAdditional(2).Initialize("RadioButton2")
+'	RadioAdditional(2).Text="Skull"
+'	RadioAdditional(2).TextSize=14
+'	
+'	RadioAdditional(0).TextColor=Colors.White
+'	RadioAdditional(1).TextColor=Colors.White
+'	RadioAdditional(2).TextColor=Colors.White
+'	Activity.AddView(RadioAdditional(0),40dip,160dip,50%X,20dip)
+'	Activity.AddView(RadioAdditional(1),40dip,210dip,50%X,20dip)
+'	Activity.AddView(RadioAdditional(2),40dip,260dip,50%X,20dip)
+'	
+'	If Starter.ADDITIONAL<0 Or Starter.ADDITIONAL>2 Then Starter.ADDITIONAL=0
+'	RadioAdditional(Starter.ADDITIONAL).Checked=True
+'
+'	'Sound when double tap
+'	Dim chkSound As CheckBox
+'	chkSound.Initialize("chkSound")
+'	chkSound.Text="Sound when double tap"
+'	chkSound.TextSize=16
+'	chkSound.TextColor=Colors.White
+'	chkSound.Checked=Starter.SOUND
+'	Activity.AddView(chkSound,20dip,310dip,100%X-40dip,30dip)
+'
+
+'	'=========================================================
+'	' DRAW SANTA
+'	'=========================================================
+'	wwgif=200:hhgif=140
+'	wwb=75dip:hhb=60dip
+'	
+'	'Dim IV1 As ImageView
+'	IV1.Initialize("")
+'	IV1.Gravity=Gravity.FILL
+'	Activity.AddView(IV1,50%X,RadioAdditional(1).Top + (RadioAdditional(1).Height/2)-hhb/2,wwb,hhb)
+'	Dim BB1 As Bitmap
+'	BB1.InitializeMutable(wwb,hhb)
+'	Dim cv1 As Canvas
+'	cv1.Initialize2(BB1)
+'	Dim SrcRect As Rect
+'	SrcRect.Initialize(0,0,wwgif,hhgif)
+'	Dim Rect1 As Rect
+'	Rect1.Initialize(0,0,wwb,hhb)
+'	Dim bb0 As Bitmap
+'	bb0.Initialize(File.DirAssets,"santa.png")
+'	cv1.DrawBitmap(bb0,SrcRect,Rect1)
+'	
+'	IV1.Bitmap=BB1
+'	IV1.Invalidate
+'	For k=0 To num_gifs_santa-1
+'		SrcRect.Initialize(k*wwgif,0,(k+1)*wwgif,hhgif)
+'		bb_santa(k).InitializeMutable(wwb,hhb)
+'		cv1.Initialize2(bb_santa(k))
+'		cv1.DrawBitmap(bb0,SrcRect,Rect1)
+'	Next
+'	
+'	'=========================================================
+'	' DRAW SKULL
+'	'=========================================================
+'	Dim wwgif,hhgif,wwb,hhb As Int
+'	wwgif=172:hhgif=108
+'	wwb=86dip:hhb=54dip
+'	
+'	Dim IV2 As ImageView
+'	IV2.Initialize("")
+'	IV2.Gravity=Gravity.FILL
+'	Activity.AddView(IV2,50%X,RadioAdditional(2).Top + (RadioAdditional(2).Height/2)-hhb/2,wwb,hhb)
+'	Dim BB2 As Bitmap
+'	BB2.InitializeMutable(wwb,hhb)
+'	Dim cv1 As Canvas
+'	cv1.Initialize2(BB2)
+'	Dim SrcRect As Rect
+'	SrcRect.Initialize(0,0,wwgif,hhgif)
+'	Dim Rect1 As Rect
+'	Rect1.Initialize(0,0,wwb,hhb)
+'	Dim bb0 As Bitmap
+'	bb0.Initialize(File.DirAssets,"skulls.png")
+'	cv1.DrawBitmap(bb0,SrcRect,Rect1)
+'	
+'	IV2.Bitmap=BB2
+'	IV2.Invalidate
+'	
+'	For k=0 To num_gifs_skull-1
+'		SrcRect.Initialize(k*wwgif,0,(k+1)*wwgif,hhgif)
+'		bb_skulls(k).InitializeMutable(wwb,hhb)
+'		cv1.Initialize2(bb_skulls(k))
+'		cv1.DrawBitmap(bb0,SrcRect,Rect1)
+'	Next
+	
+	
+	'CheckBox  MOVE
+'	Dim chkMove As CheckBox
+'	chkMove.Initialize("chkMove")
+'	chkMove.Text="GIFs move freely through the screen"
+'	chkMove.TextSize=16
+'	chkMove.TextColor=Colors.White
+'	chkMove.Checked=Starter.MOVE
+'	Activity.AddView(chkMove,20dip,360dip,100%X-40dip,50dip)
+'	
+'	'Button: START / FINISH
+'	Dim b As Button: b.Initialize("START")
+'	Dim cd As ColorDrawable
+'	cd.Initialize(Colors.Black,6dip)
+'	b.Background	= cd
+'	b.Text="Start!"
+'	b.TextSize=18
+'	Activity.AddView(b,20dip,100%Y-80dip,50%X-30dip,60dip)
+'	
+'	'Button: START / FINISH
+'	Dim b2 As Button: b2.Initialize("FINISH")
+'	Dim cd As ColorDrawable
+'	cd.Initialize(Colors.Black,6dip)
+'	b2.Background	= cd
+'	b2.Text="Exit"
+'	b2.TextSize=18
+'	Activity.AddView(b2,50%X+10dip,100%Y-80dip,50%X-30dip,60dip)
+'	
+'	
+'	Activity.Invalidate
+
+	'Timer1.Initialize("Timer1",100)
+	'Timer1.Enabled=False
+	
+	
+End Sub
+
+Sub  IVSnow_Click
+	
+	Dim I As ImageView = Sender
+	Dim k As Int =I.Tag
+	Starter.NUM_STARS=k+1
+	
+End Sub
+
+
+Sub Timer1_Tick
+	Log("stopping oService")
+	StopService(oService)
+'	For k=0 To 4
+'		If k<Starter.NUM_STARS Then
+'			IVSnow(k).Bitmap=bb_snow(index_snow)
+'		Else
+'			IVSnow(k).Bitmap=bb_snow_gray
+'		End If
+'
+'	Next
+'	index_snow=(index_snow+1)Mod num_gifs_snow
+'
+'	If RadioAdditional(1).Checked=True Then
+'		IV1.Bitmap=bb_santa(index_santa)
+'		IV1.Invalidate
+'		index_santa=(index_santa+1)Mod num_gifs_santa
+'	else if RadioAdditional(2).Checked=True Then
+'		IV2.Bitmap=bb_skulls(index_skull)
+'		IV2.Invalidate
+'		index_skull=(index_skull+1)Mod num_gifs_skull
+'	End If
+	
+	
+End Sub
+
+Sub START_click
+	Starter.MYSERVICE=True
+	StartService(oService)
+	Activity.Finish
+End Sub
+
+Sub FINISH_click
+	Activity.Finish
+End Sub
+
+Sub  chkSound_CheckedChange(Checked As Boolean)
+	Starter.SOUND = Checked
+End Sub
+Sub  chkMove_CheckedChange(Checked As Boolean)
+	Starter.MOVE = Checked
+End Sub
+
+Sub  Radiobutton0_CheckedChange(Checked As Boolean)
+	If Checked=True Then Starter.additional=0
+End Sub
+Sub  Radiobutton1_CheckedChange(Checked As Boolean)
+	If Checked=True Then Starter.additional=1
+End Sub
+Sub  Radiobutton2_CheckedChange(Checked As Boolean)
+	If Checked=True Then Starter.additional=2
+End Sub
+
+Sub FusedLocationProvider1_ConnectionFailed(ConnectionResult1 As Int)
+	Log("FusedLocationProvider1_ConnectionFailed")
+
+	'    the FusedLocationProvider ConnectionResult object contains the various CoonectionResult constants
+
+	Select ConnectionResult1
+		Case FusedLocationProvider1.ConnectionResult.NETWORK_ERROR
+			'    a network error has occurred, this is likely to be a recoverable error
+			'    so try to connect again
+			FusedLocationProvider1.Connect
+		Case Else
+			'    TODO handle other errors
+	End Select
+End Sub
+
+Sub FusedLocationProvider1_ConnectionSuccess
+	Log("FusedLocationProvider1_ConnectionSuccess")
+
+	Dim LastKnownLocation As Location
+	LastKnownLocation=FusedLocationProvider1.GetLastKnownLocation
+
+	If LastKnownLocation.IsInitialized Then
+		GeocodeLocation(LastKnownLocation)
+	Else
+		Dim LocationRequest1 As LocationRequest
+		LocationRequest1.Initialize
+		LocationRequest1.SetInterval(1000)    '    1000 milliseconds
+		LocationRequest1.SetPriority(LocationRequest1.Priority.PRIORITY_NO_POWER)
+		LocationRequest1.SetSmallestDisplacement(1)    '    1 meter
+		FusedLocationProvider1.RequestLocationUpdates(LocationRequest1)
+	End If
+End Sub
+
+Sub FusedLocationProvider1_ConnectionSuspended(SuspendedCause1 As Int)
+	Log("FusedLocationProvider1_ConnectionSuspended")
+
+	'    the FusedLocationProvider SuspendedCause object contains the various SuspendedCause constants
+
+	Select SuspendedCause1
+		Case FusedLocationProvider1.SuspendedCause.CAUSE_NETWORK_LOST
+			'    TODO take action
+		Case FusedLocationProvider1.SuspendedCause.CAUSE_SERVICE_DISCONNECTED
+			'    TODO take action
+	End Select
+End Sub
+
+Sub FusedLocationProvider1_LocationChanged(Location1 As Location)
+	Log("FusedLocationProvider1_LocationChanged")
+
+	FusedLocationProvider1.RemoveLocationUpdates
+	GeocodeLocation(Location1)
+End Sub
+
+Sub GeocodeLocation(Location1 As Location)
+	Log("GeocodeLocation: "&Location1.Latitude&", "&Location1.Longitude)
+	'    here you can get the Location Latitude and Longitude properties and use the Geocoder library to perform a reverse geocode
+	'    if the reverse geocode is successful you will have the country that the device is located in
+
+	Dim MaxResults As Int
+	MaxResults=2
+
+	Geocoder1.GetFromLocation(Location1.Latitude, Location1.Longitude, MaxResults, Null)
+	'Or
+	'LatLonToPlace(Location1.Latitude, Location1.Longitude)
+End Sub
+
+Sub LatLonToPlace(lat As Double, lon As Double) 'As ResumableSub
+	Dim API_KEY As String = "AIzaSyAvz6aSaS-lG9kEbHHZOX_BEGgGTx7RZjM"
+	Dim res As String
+	Dim GetAddressJob As HttpJob
+	GetAddressJob.Initialize("GetAddress", Me)
+	GetAddressJob.Download2("https://maps.googleapis.com/maps/api/geocode/json", Array As String("latlng", lat & "," & lon,"key",API_KEY))
+	Wait For (GetAddressJob) JobDone(GetAddressJob As HttpJob)
+	If GetAddressJob.Success Then
+		Dim jp As JSONParser
+		jp.Initialize(GetAddressJob.GetString)
+		Dim m As Map = jp.NextObject
+		If m.Get("status") = "OK" Then
+			Dim results As List = m.Get("results")
+			If results.Size > 0 Then
+				Dim first As Map = results.Get(0)
+				res = first.Get("formatted_address")
+				Log(res)
+				'res contain address string
+			End If
+		End If
+	End If
+	GetAddressJob.Release
+End Sub
+
+Sub Geocoder1_GeocodeDone(Results() As Address, Tag As Object)
+	If Results.Length>0 Then
+		Dim Address1 As Address
+		Dim i As Int
+		For i=0 To Results.Length-1
+			Log("**********")
+			Log("Result("&i&")")
+			Log("AddressLines:")
+			Address1=Results(i)
+			For j=0 To Address1.AddressLines.Size-1
+				Log(Address1.AddressLines.Get(j))
+			Next
+			
+			Log("CountryCode: "&Address1.CountryName)
+			Log("Locality: "&Address1.Locality)
+			
+			
+		Next
+		strLocation = Address1.Locality
+		Starter.MYSERVICE=True
+		StartService(oService)
+'		Timer1.Initialize("Timer1",5000)
+'		Timer1.Enabled = True
+
+		Activity.Finish
+	Else
+		Log("**********")
+		Log("No results found")
+	End If
+End Sub
+
+Sub Activity_Resume
+	
+	FusedLocationProvider1.Connect
+	
+	Starter.MYSERVICE=False
+	StopService(oService)
+	'Timer1.enabled=True
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	FusedLocationProvider1.Disconnect
+	'Timer1.enabled=False
+End Sub
