@@ -17,6 +17,8 @@ Sub Process_Globals
 	Dim ADDITIONAL As Int
 	Dim MOVE As Boolean
 	Dim MYSERVICE As Boolean=False
+	
+	'Dim Timer1 As Timer
 End Sub
 
 Sub Service_Create
@@ -26,8 +28,8 @@ Sub Service_Create
 End Sub
 
 Sub Service_Start (StartingIntent As Intent)
-	
-
+		'Timer1.Initialize("Timer1",8000)
+		'Timer1.Enabled = True
 End Sub
 
 Sub Service_TaskRemoved

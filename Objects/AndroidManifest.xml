@@ -36,13 +36,13 @@
 			</intent-filter>
 			
 		</activity>
-		<service android:name=".starter">
-		</service>
-		<receiver android:name=".starter$starter_BR">
-		</receiver>
 		<service android:name=".oservice">
 		</service>
 		<receiver android:name=".oservice$oservice_BR">
+		</receiver>
+		<service android:name=".starter">
+		</service>
+		<receiver android:name=".starter$starter_BR">
 		</receiver>
 		<service android:name="anywheresoftware.b4a.samples.httputils2.httputils2service">
 		</service>

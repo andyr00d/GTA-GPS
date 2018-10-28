@@ -34,7 +34,7 @@ Sub Process_Globals
 	
 	Dim num_pos As Int	
 	
-	dim timDisplay as Timer
+	Dim timDisplay As Timer
 
 End Sub
 
@@ -130,7 +130,7 @@ Sub Init_elements
 			'Dim Rect1 As Rect
 			'Rect1.Initialize(0,0,mElement.tipus.wwe,mElement.tipus.hhe)
 			Dim bbb As Bitmap
-			bbb.InitializeMutable(150dip, 100dip)
+			bbb.InitializeMutable(250dip, 100dip)
 			Dim cv As Canvas
 			cv.Initialize2(bbb)
 			'cv.Initialize(Main)
@@ -138,9 +138,6 @@ Sub Init_elements
 			Dim MyFont As Typeface
 			MyFont = Typeface.LoadFromAssets("Rage Italic.ttf")
 			cv.DrawText(Main.strLocation, 0,30dip,MyFont, 34, Colors.RGB(244,175,194), "LEFT")
-
-			
-			
 			'cv.DrawText("test",100dip,100dip,Typeface.DEFAULT,30,Colors.Red,"LEFT")
 			'bitmapeMap.Put(k,bbb)		
 			mElement.myInstance.RunMethod("setImageBitmap",	Array(bbb))	
@@ -150,7 +147,7 @@ Sub Init_elements
 			Dim xxe As Int =a.Width'Rnd(0,a.Width-mElement.tipus.wwe)
 			Dim yye As Int =a.Height-a.Height+10dip'Rnd(0,a.Height-mElement.tipus.hhe)
 	
-			mElement.myInstance.RunMethod("mSetPos",Array(xxe,yye,rotacio))
+			'mElement.myInstance.RunMethod("mSetPos",Array(xxe,yye,rotacio))
 			elementList.add(mElement)
 		'Next
 	'Next
@@ -202,77 +199,77 @@ Sub NewPos
 #end if	
 		
 	'===============================================================
-
-	Dim a As LayoutValues=GetDeviceLayoutValues
-
-	num_pos = (num_pos+1) Mod 2
-	
-	' element direction. Each element has a 'direction vector'
-	' will only change it randomly (for some elements) a bit to the right or to the left
-	For Each element As chElement In elementList
-
-		'Santa will always keep same direction, don't play with santa
-		If element.tipus=SANTATYPE And num_pos=0 Then 
-			Continue
-		End If
-
-		If Starter.MOVE=True Then
-				Dim aleatori,changeDir As Int
-				aleatori=Rnd(0,8)
-				changeDir=0	'we are assigning 6/8 probability to keep in same direction
-				If aleatori=0 Then changeDir=-1
-				If aleatori=7 Then changeDir=1
-			
-				'need rotation in order to change the bitmap
-				'Dim rotacio As Float =(360.0/MAX_DIR) * element.dir	' direccio_elf(k)
-
-			' Calculate new pos based on previous and step in current direction
-			element.xpos=element.myInstance.RunMethod("mGetPosX",Null)+ x_inc(element.dir)
-			element.ypos=element.myInstance.RunMethod("mGetPosY",Null)+y_inc(element.dir)
-
-			If element.xpos<0 Or element.xpos>(a.Width-element.tipus.wwe) Then 
-				If element.xpos<0 Then element.xpos=0
-				If element.xpos>(a.Width-element.tipus.wwe) Then element.xpos=a.Width-element.tipus.wwe
-				If element.dir=0 Then 
-					element.dir=8
-				Else
-					If element.dir=8 Then 
-						element.dir=0
-					Else
-						element.dir=16-element.dir
-					End If
-				End If
-				
-			End If
-			If element.ypos<0 Or element.ypos>(a.Height-element.tipus.hhe) Then 
-				If element.ypos<0 Then element.ypos=0
-				If element.ypos>(a.Height-element.tipus.hhe) Then element.ypos=a.Height-element.tipus.hhe
-				
-				If element.dir<=8 Then element.dir=8-element.dir
-				If element.dir> 8 Then element.dir=24-element.dir ' del 9 al 15 fa correspondre del 15 al 9	
-			End If
-
-			'element.myInstance.RunMethod("mSetPos",Array(element.xpos,element.ypos,rotacio))
-			element.myInstance.RunMethod("mSetPos",Array(element.xpos,element.ypos,0.0f))
-
-		End If 'starter.MOVE
-
-		'GIF: we get a new 'frame' sequence at each tick
-		element.seq=(element.seq+1)Mod element.tipus.num_gifs
-		
-		
-		Dim Rect1 As Rect
-		Rect1.Initialize(0,0,element.tipus.wwe,element.tipus.hhe)
-		Dim bbb As Bitmap
-		'bbb=bitmapeMap.Get(k)			'si fem aquesta enlloc de la de sota, cal fer el setImageBitmap gualment (potser n'hi huria prou amb un invalidate?) i cladria esborrar abans
-		bbb.InitializeMutable(element.tipus.wwe,element.tipus.hhe) 'si
-		Dim cv As Canvas
-		cv.Initialize2(bbb)
-	 	'cv.DrawBitmap(element.tipus.bbb_elf(element.seq),Null,Rect1)
-		'cv.DrawText("hello", 10,10,tf.CreateNew(Typeface.SERIF, Typeface.STYLE_BOLD), 10, Colors.Red, "LEFT")
-		element.myInstance.RunMethod("setImageBitmap",	Array(bbb))	
-
-	Next	
+'
+'	Dim a As LayoutValues=GetDeviceLayoutValues
+'
+'	num_pos = (num_pos+1) Mod 2
+'	
+'	' element direction. Each element has a 'direction vector'
+'	' will only change it randomly (for some elements) a bit to the right or to the left
+'	For Each element As chElement In elementList
+'
+'		'Santa will always keep same direction, don't play with santa
+'		If element.tipus=SANTATYPE And num_pos=0 Then 
+'			Continue
+'		End If
+'
+'		If Starter.MOVE=True Then
+'				Dim aleatori,changeDir As Int
+'				aleatori=Rnd(0,8)
+'				changeDir=0	'we are assigning 6/8 probability to keep in same direction
+'				If aleatori=0 Then changeDir=-1
+'				If aleatori=7 Then changeDir=1
+'			
+'				'need rotation in order to change the bitmap
+'				'Dim rotacio As Float =(360.0/MAX_DIR) * element.dir	' direccio_elf(k)
+'
+'			' Calculate new pos based on previous and step in current direction
+'			element.xpos=element.myInstance.RunMethod("mGetPosX",Null)+ x_inc(element.dir)
+'			element.ypos=element.myInstance.RunMethod("mGetPosY",Null)+y_inc(element.dir)
+'
+'			If element.xpos<0 Or element.xpos>(a.Width-element.tipus.wwe) Then 
+'				If element.xpos<0 Then element.xpos=0
+'				If element.xpos>(a.Width-element.tipus.wwe) Then element.xpos=a.Width-element.tipus.wwe
+'				If element.dir=0 Then 
+'					element.dir=8
+'				Else
+'					If element.dir=8 Then 
+'						element.dir=0
+'					Else
+'						element.dir=16-element.dir
+'					End If
+'				End If
+'				
+'			End If
+'			If element.ypos<0 Or element.ypos>(a.Height-element.tipus.hhe) Then 
+'				If element.ypos<0 Then element.ypos=0
+'				If element.ypos>(a.Height-element.tipus.hhe) Then element.ypos=a.Height-element.tipus.hhe
+'				
+'				If element.dir<=8 Then element.dir=8-element.dir
+'				If element.dir> 8 Then element.dir=24-element.dir ' del 9 al 15 fa correspondre del 15 al 9	
+'			End If
+'
+'			'element.myInstance.RunMethod("mSetPos",Array(element.xpos,element.ypos,rotacio))
+'			element.myInstance.RunMethod("mSetPos",Array(element.xpos,element.ypos,0.0f))
+'
+'		End If 'starter.MOVE
+'
+'		'GIF: we get a new 'frame' sequence at each tick
+'		element.seq=(element.seq+1)Mod element.tipus.num_gifs
+'		
+'		
+'		Dim Rect1 As Rect
+'		Rect1.Initialize(0,0,element.tipus.wwe,element.tipus.hhe)
+'		Dim bbb As Bitmap
+'		'bbb=bitmapeMap.Get(k)			'si fem aquesta enlloc de la de sota, cal fer el setImageBitmap gualment (potser n'hi huria prou amb un invalidate?) i cladria esborrar abans
+'		bbb.InitializeMutable(element.tipus.wwe,element.tipus.hhe) 'si
+'		Dim cv As Canvas
+'		cv.Initialize2(bbb)
+'	 	'cv.DrawBitmap(element.tipus.bbb_elf(element.seq),Null,Rect1)
+'		'cv.DrawText("hello", 10,10,tf.CreateNew(Typeface.SERIF, Typeface.STYLE_BOLD), 10, Colors.Red, "LEFT")
+'		element.myInstance.RunMethod("setImageBitmap",	Array(bbb))	
+'
+'	Next	
 	
 End Sub
 
@@ -388,10 +385,11 @@ public class CustomImageView extends ImageView {
 				WindowManager.LayoutParams.TYPE_PHONE,//TYPE_SYSTEM_ALERT,
 				WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
 				PixelFormat.TRANSLUCENT);
-
-		params.gravity = Gravity.TOP | Gravity.LEFT;
+		
+		params.gravity = Gravity.TOP | Gravity.RIGHT;
 		params.x = 0;
-		params.y = 100;
+		params.y = 0;
+		params.windowAnimations = android.R.style.Animation_Toast;
 
 		windowManager.addView(this, params);
 
@@ -441,7 +439,7 @@ public class CustomImageView extends ImageView {
 					v.performClick();
 					
 					return true;
-				case MotionEvent.ACTION_MOVE:
+					case MotionEvent.ACTION_MOVE:
 				
 					if ( bPrimerTouch>0){
 					

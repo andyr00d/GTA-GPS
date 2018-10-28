@@ -134,10 +134,10 @@ public anywheresoftware.b4a.samples.httputils2.httputils2service _httputils2serv
 public b4a.example.main _main = null;
 public b4a.example.oservice _oservice = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
- //BA.debugLineNum = 32;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
- //BA.debugLineNum = 33;BA.debugLine="Return True";
+ //BA.debugLineNum = 34;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
+ //BA.debugLineNum = 35;BA.debugLine="Return True";
 if (true) return anywheresoftware.b4a.keywords.Common.True;
- //BA.debugLineNum = 34;BA.debugLine="End Sub";
+ //BA.debugLineNum = 36;BA.debugLine="End Sub";
 return false;
 }
 public static String  _process_globals() throws Exception{
@@ -152,27 +152,27 @@ _additional = 0;
 _move = false;
  //BA.debugLineNum = 13;BA.debugLine="Dim MYSERVICE As Boolean=False";
 _myservice = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 14;BA.debugLine="End Sub";
+ //BA.debugLineNum = 16;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_create() throws Exception{
- //BA.debugLineNum = 16;BA.debugLine="Sub Service_Create";
- //BA.debugLineNum = 20;BA.debugLine="End Sub";
+ //BA.debugLineNum = 18;BA.debugLine="Sub Service_Create";
+ //BA.debugLineNum = 22;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_destroy() throws Exception{
- //BA.debugLineNum = 36;BA.debugLine="Sub Service_Destroy";
- //BA.debugLineNum = 38;BA.debugLine="End Sub";
+ //BA.debugLineNum = 38;BA.debugLine="Sub Service_Destroy";
+ //BA.debugLineNum = 40;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_start(anywheresoftware.b4a.objects.IntentWrapper _startingintent) throws Exception{
- //BA.debugLineNum = 22;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
- //BA.debugLineNum = 25;BA.debugLine="End Sub";
+ //BA.debugLineNum = 24;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
+ //BA.debugLineNum = 27;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_taskremoved() throws Exception{
- //BA.debugLineNum = 27;BA.debugLine="Sub Service_TaskRemoved";
- //BA.debugLineNum = 29;BA.debugLine="End Sub";
+ //BA.debugLineNum = 29;BA.debugLine="Sub Service_TaskRemoved";
+ //BA.debugLineNum = 31;BA.debugLine="End Sub";
 return "";
 }
 }

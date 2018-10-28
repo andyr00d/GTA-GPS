@@ -214,24 +214,24 @@ seq = 0;
 			return BA.TypeToString(this, false);
 		}}
 public static String  _action_down(String _x) throws Exception{
- //BA.debugLineNum = 315;BA.debugLine="Sub action_down(x As String)";
- //BA.debugLineNum = 316;BA.debugLine="If Starter.SOUND=True Then";
+ //BA.debugLineNum = 312;BA.debugLine="Sub action_down(x As String)";
+ //BA.debugLineNum = 313;BA.debugLine="If Starter.SOUND=True Then";
 if (mostCurrent._starter._sound==anywheresoftware.b4a.keywords.Common.True) { 
  };
- //BA.debugLineNum = 319;BA.debugLine="End Sub";
+ //BA.debugLineNum = 316;BA.debugLine="End Sub";
 return "";
 }
 public static String  _action_drag(float[] _x) throws Exception{
- //BA.debugLineNum = 321;BA.debugLine="Sub action_drag( x() As Float)";
- //BA.debugLineNum = 325;BA.debugLine="End Sub";
+ //BA.debugLineNum = 318;BA.debugLine="Sub action_drag( x() As Float)";
+ //BA.debugLineNum = 322;BA.debugLine="End Sub";
 return "";
 }
 public static String  _double_tap(int _id) throws Exception{
- //BA.debugLineNum = 304;BA.debugLine="Sub double_tap(id As Int)";
- //BA.debugLineNum = 306;BA.debugLine="If Starter.SOUND=True Then";
+ //BA.debugLineNum = 301;BA.debugLine="Sub double_tap(id As Int)";
+ //BA.debugLineNum = 303;BA.debugLine="If Starter.SOUND=True Then";
 if (mostCurrent._starter._sound==anywheresoftware.b4a.keywords.Common.True) { 
  };
- //BA.debugLineNum = 313;BA.debugLine="End Sub";
+ //BA.debugLineNum = 310;BA.debugLine="End Sub";
 return "";
 }
 public static String  _init_elements() throws Exception{
@@ -281,8 +281,8 @@ _id = (int) (_id+1);
 _melement.seq = anywheresoftware.b4a.keywords.Common.Rnd((int) (0),_melement.tipus.num_gifs);
  //BA.debugLineNum = 126;BA.debugLine="Dim bbb As Bitmap";
 _bbb = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
- //BA.debugLineNum = 127;BA.debugLine="bbb.InitializeMutable(150dip, 100dip)";
-_bbb.InitializeMutable(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (150)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (100)));
+ //BA.debugLineNum = 127;BA.debugLine="bbb.InitializeMutable(250dip, 100dip)";
+_bbb.InitializeMutable(anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (250)),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (100)));
  //BA.debugLineNum = 128;BA.debugLine="Dim cv As Canvas";
 _cv = new anywheresoftware.b4a.objects.drawable.CanvasWrapper();
  //BA.debugLineNum = 129;BA.debugLine="cv.Initialize2(bbb)";
@@ -293,139 +293,35 @@ _myfont = new anywheresoftware.b4a.keywords.constants.TypefaceWrapper();
 _myfont.setObject((android.graphics.Typeface)(anywheresoftware.b4a.keywords.Common.Typeface.LoadFromAssets("Rage Italic.ttf")));
  //BA.debugLineNum = 134;BA.debugLine="cv.DrawText(Main.strLocation, 0,30dip,MyFont, 3";
 _cv.DrawText(processBA,mostCurrent._main._strlocation,(float) (0),(float) (anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30))),(android.graphics.Typeface)(_myfont.getObject()),(float) (34),anywheresoftware.b4a.keywords.Common.Colors.RGB((int) (244),(int) (175),(int) (194)),BA.getEnumFromString(android.graphics.Paint.Align.class,"LEFT"));
- //BA.debugLineNum = 140;BA.debugLine="mElement.myInstance.RunMethod(\"setImageBitmap\",";
+ //BA.debugLineNum = 137;BA.debugLine="mElement.myInstance.RunMethod(\"setImageBitmap\",";
 _melement.myInstance.RunMethod("setImageBitmap",new Object[]{(Object)(_bbb.getObject())});
- //BA.debugLineNum = 141;BA.debugLine="mElement.dir = Rnd(0,MAX_DIR)";
+ //BA.debugLineNum = 138;BA.debugLine="mElement.dir = Rnd(0,MAX_DIR)";
 _melement.dir = anywheresoftware.b4a.keywords.Common.Rnd((int) (0),_max_dir);
- //BA.debugLineNum = 143;BA.debugLine="Dim rotacio As Float =0'(360.0/MAX_DIR) * direc";
+ //BA.debugLineNum = 140;BA.debugLine="Dim rotacio As Float =0'(360.0/MAX_DIR) * direc";
 _rotacio = (float) (0);
- //BA.debugLineNum = 144;BA.debugLine="Dim xxe As Int =a.Width'Rnd(0,a.Width-mElement.";
+ //BA.debugLineNum = 141;BA.debugLine="Dim xxe As Int =a.Width'Rnd(0,a.Width-mElement.";
 _xxe = _a.Width;
- //BA.debugLineNum = 145;BA.debugLine="Dim yye As Int =a.Height-a.Height+10dip'Rnd(0,a";
+ //BA.debugLineNum = 142;BA.debugLine="Dim yye As Int =a.Height-a.Height+10dip'Rnd(0,a";
 _yye = (int) (_a.Height-_a.Height+anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (10)));
- //BA.debugLineNum = 147;BA.debugLine="mElement.myInstance.RunMethod(\"mSetPos\",Array(x";
-_melement.myInstance.RunMethod("mSetPos",new Object[]{(Object)(_xxe),(Object)(_yye),(Object)(_rotacio)});
- //BA.debugLineNum = 148;BA.debugLine="elementList.add(mElement)";
+ //BA.debugLineNum = 145;BA.debugLine="elementList.add(mElement)";
 _elementlist.Add((Object)(_melement));
- //BA.debugLineNum = 154;BA.debugLine="timDisplay.Initialize(\"timDisplay\",5000)";
+ //BA.debugLineNum = 151;BA.debugLine="timDisplay.Initialize(\"timDisplay\",5000)";
 _timdisplay.Initialize(processBA,"timDisplay",(long) (5000));
- //BA.debugLineNum = 155;BA.debugLine="timDisplay.Enabled = True";
+ //BA.debugLineNum = 152;BA.debugLine="timDisplay.Enabled = True";
 _timdisplay.setEnabled(anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 156;BA.debugLine="End Sub";
+ //BA.debugLineNum = 153;BA.debugLine="End Sub";
 return "";
 }
 public static String  _newpos() throws Exception{
-anywheresoftware.b4a.keywords.LayoutValues _a = null;
-b4a.example.oservice._chelement _element = null;
-int _aleatori = 0;
-int _changedir = 0;
-anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper _rect1 = null;
-anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper _bbb = null;
-anywheresoftware.b4a.objects.drawable.CanvasWrapper _cv = null;
- //BA.debugLineNum = 176;BA.debugLine="Sub NewPos";
- //BA.debugLineNum = 178;BA.debugLine="If Starter.MYSERVICE=False Then";
+ //BA.debugLineNum = 173;BA.debugLine="Sub NewPos";
+ //BA.debugLineNum = 175;BA.debugLine="If Starter.MYSERVICE=False Then";
 if (mostCurrent._starter._myservice==anywheresoftware.b4a.keywords.Common.False) { 
- //BA.debugLineNum = 179;BA.debugLine="StopService(Me)";
+ //BA.debugLineNum = 176;BA.debugLine="StopService(Me)";
 anywheresoftware.b4a.keywords.Common.StopService(processBA,oservice.getObject());
- //BA.debugLineNum = 180;BA.debugLine="Return				'just in case";
+ //BA.debugLineNum = 177;BA.debugLine="Return				'just in case";
 if (true) return "";
  };
- //BA.debugLineNum = 200;BA.debugLine="Dim a As LayoutValues=GetDeviceLayoutValues";
-_a = anywheresoftware.b4a.keywords.Common.GetDeviceLayoutValues(processBA);
- //BA.debugLineNum = 202;BA.debugLine="num_pos = (num_pos+1) Mod 2";
-_num_pos = (int) ((_num_pos+1)%2);
- //BA.debugLineNum = 206;BA.debugLine="For Each element As chElement In elementList";
-{
-final anywheresoftware.b4a.BA.IterableList group7 = _elementlist;
-final int groupLen7 = group7.getSize()
-;int index7 = 0;
-;
-for (; index7 < groupLen7;index7++){
-_element = (b4a.example.oservice._chelement)(group7.Get(index7));
- //BA.debugLineNum = 209;BA.debugLine="If element.tipus=SANTATYPE And num_pos=0 Then";
-if ((_element.tipus).equals(_santatype) && _num_pos==0) { 
- //BA.debugLineNum = 210;BA.debugLine="Continue";
-if (true) continue;
- };
- //BA.debugLineNum = 213;BA.debugLine="If Starter.MOVE=True Then";
-if (mostCurrent._starter._move==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 214;BA.debugLine="Dim aleatori,changeDir As Int";
-_aleatori = 0;
-_changedir = 0;
- //BA.debugLineNum = 215;BA.debugLine="aleatori=Rnd(0,8)";
-_aleatori = anywheresoftware.b4a.keywords.Common.Rnd((int) (0),(int) (8));
- //BA.debugLineNum = 216;BA.debugLine="changeDir=0	'we are assigning 6/8 probability";
-_changedir = (int) (0);
- //BA.debugLineNum = 217;BA.debugLine="If aleatori=0 Then changeDir=-1";
-if (_aleatori==0) { 
-_changedir = (int) (-1);};
- //BA.debugLineNum = 218;BA.debugLine="If aleatori=7 Then changeDir=1";
-if (_aleatori==7) { 
-_changedir = (int) (1);};
- //BA.debugLineNum = 224;BA.debugLine="element.xpos=element.myInstance.RunMethod(\"mGet";
-_element.xpos = (int) ((double)(BA.ObjectToNumber(_element.myInstance.RunMethod("mGetPosX",(Object[])(anywheresoftware.b4a.keywords.Common.Null))))+_x_inc[_element.dir]);
- //BA.debugLineNum = 225;BA.debugLine="element.ypos=element.myInstance.RunMethod(\"mGet";
-_element.ypos = (int) ((double)(BA.ObjectToNumber(_element.myInstance.RunMethod("mGetPosY",(Object[])(anywheresoftware.b4a.keywords.Common.Null))))+_y_inc[_element.dir]);
- //BA.debugLineNum = 227;BA.debugLine="If element.xpos<0 Or element.xpos>(a.Width-elem";
-if (_element.xpos<0 || _element.xpos>(_a.Width-_element.tipus.wwe)) { 
- //BA.debugLineNum = 228;BA.debugLine="If element.xpos<0 Then element.xpos=0";
-if (_element.xpos<0) { 
-_element.xpos = (int) (0);};
- //BA.debugLineNum = 229;BA.debugLine="If element.xpos>(a.Width-element.tipus.wwe) Th";
-if (_element.xpos>(_a.Width-_element.tipus.wwe)) { 
-_element.xpos = (int) (_a.Width-_element.tipus.wwe);};
- //BA.debugLineNum = 230;BA.debugLine="If element.dir=0 Then";
-if (_element.dir==0) { 
- //BA.debugLineNum = 231;BA.debugLine="element.dir=8";
-_element.dir = (int) (8);
- }else {
- //BA.debugLineNum = 233;BA.debugLine="If element.dir=8 Then";
-if (_element.dir==8) { 
- //BA.debugLineNum = 234;BA.debugLine="element.dir=0";
-_element.dir = (int) (0);
- }else {
- //BA.debugLineNum = 236;BA.debugLine="element.dir=16-element.dir";
-_element.dir = (int) (16-_element.dir);
- };
- };
- };
- //BA.debugLineNum = 241;BA.debugLine="If element.ypos<0 Or element.ypos>(a.Height-ele";
-if (_element.ypos<0 || _element.ypos>(_a.Height-_element.tipus.hhe)) { 
- //BA.debugLineNum = 242;BA.debugLine="If element.ypos<0 Then element.ypos=0";
-if (_element.ypos<0) { 
-_element.ypos = (int) (0);};
- //BA.debugLineNum = 243;BA.debugLine="If element.ypos>(a.Height-element.tipus.hhe) T";
-if (_element.ypos>(_a.Height-_element.tipus.hhe)) { 
-_element.ypos = (int) (_a.Height-_element.tipus.hhe);};
- //BA.debugLineNum = 245;BA.debugLine="If element.dir<=8 Then element.dir=8-element.d";
-if (_element.dir<=8) { 
-_element.dir = (int) (8-_element.dir);};
- //BA.debugLineNum = 246;BA.debugLine="If element.dir> 8 Then element.dir=24-element.";
-if (_element.dir>8) { 
-_element.dir = (int) (24-_element.dir);};
- };
- //BA.debugLineNum = 250;BA.debugLine="element.myInstance.RunMethod(\"mSetPos\",Array(el";
-_element.myInstance.RunMethod("mSetPos",new Object[]{(Object)(_element.xpos),(Object)(_element.ypos),(Object)(0.0f)});
- };
- //BA.debugLineNum = 255;BA.debugLine="element.seq=(element.seq+1)Mod element.tipus.num";
-_element.seq = (int) ((_element.seq+1)%_element.tipus.num_gifs);
- //BA.debugLineNum = 258;BA.debugLine="Dim Rect1 As Rect";
-_rect1 = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.RectWrapper();
- //BA.debugLineNum = 259;BA.debugLine="Rect1.Initialize(0,0,element.tipus.wwe,element.t";
-_rect1.Initialize((int) (0),(int) (0),_element.tipus.wwe,_element.tipus.hhe);
- //BA.debugLineNum = 260;BA.debugLine="Dim bbb As Bitmap";
-_bbb = new anywheresoftware.b4a.objects.drawable.CanvasWrapper.BitmapWrapper();
- //BA.debugLineNum = 262;BA.debugLine="bbb.InitializeMutable(element.tipus.wwe,element.";
-_bbb.InitializeMutable(_element.tipus.wwe,_element.tipus.hhe);
- //BA.debugLineNum = 263;BA.debugLine="Dim cv As Canvas";
-_cv = new anywheresoftware.b4a.objects.drawable.CanvasWrapper();
- //BA.debugLineNum = 264;BA.debugLine="cv.Initialize2(bbb)";
-_cv.Initialize2((android.graphics.Bitmap)(_bbb.getObject()));
- //BA.debugLineNum = 267;BA.debugLine="element.myInstance.RunMethod(\"setImageBitmap\",	A";
-_element.myInstance.RunMethod("setImageBitmap",new Object[]{(Object)(_bbb.getObject())});
- }
-};
- //BA.debugLineNum = 271;BA.debugLine="End Sub";
+ //BA.debugLineNum = 268;BA.debugLine="End Sub";
 return "";
 }
 public static String  _process_globals() throws Exception{
@@ -456,7 +352,7 @@ _y_inc = new int[]{(int) (10),(int) (8),(int) (7),(int) (6),(int) (0),(int) (-6)
 _t = new anywheresoftware.b4a.objects.Timer();
  //BA.debugLineNum = 29;BA.debugLine="Dim num_pos As Int";
 _num_pos = 0;
- //BA.debugLineNum = 31;BA.debugLine="dim timDisplay as Timer";
+ //BA.debugLineNum = 31;BA.debugLine="Dim timDisplay As Timer";
 _timdisplay = new anywheresoftware.b4a.objects.Timer();
  //BA.debugLineNum = 33;BA.debugLine="End Sub";
 return "";
@@ -540,15 +436,15 @@ return "";
 }
 public static String  _service_destroy() throws Exception{
 b4a.example.oservice._chelement _element = null;
- //BA.debugLineNum = 277;BA.debugLine="Sub Service_Destroy";
- //BA.debugLineNum = 279;BA.debugLine="Log(\"oService.Destroy\")";
+ //BA.debugLineNum = 274;BA.debugLine="Sub Service_Destroy";
+ //BA.debugLineNum = 276;BA.debugLine="Log(\"oService.Destroy\")";
 anywheresoftware.b4a.keywords.Common.Log("oService.Destroy");
- //BA.debugLineNum = 281;BA.debugLine="t.Enabled=False";
+ //BA.debugLineNum = 278;BA.debugLine="t.Enabled=False";
 _t.setEnabled(anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 283;BA.debugLine="If Starter.SOUND=True Then";
+ //BA.debugLineNum = 280;BA.debugLine="If Starter.SOUND=True Then";
 if (mostCurrent._starter._sound==anywheresoftware.b4a.keywords.Common.True) { 
  };
- //BA.debugLineNum = 287;BA.debugLine="For Each element As chElement In elementList";
+ //BA.debugLineNum = 284;BA.debugLine="For Each element As chElement In elementList";
 {
 final anywheresoftware.b4a.BA.IterableList group5 = _elementlist;
 final int groupLen5 = group5.getSize()
@@ -556,10 +452,10 @@ final int groupLen5 = group5.getSize()
 ;
 for (; index5 < groupLen5;index5++){
 _element = (b4a.example.oservice._chelement)(group5.Get(index5));
- //BA.debugLineNum = 288;BA.debugLine="If element.myInstance<> Null Then";
+ //BA.debugLineNum = 285;BA.debugLine="If element.myInstance<> Null Then";
 if (_element.myInstance!= null) { 
- //BA.debugLineNum = 290;BA.debugLine="Try";
-try { //BA.debugLineNum = 291;BA.debugLine="element.myInstance.RunMethod(\"removeView\",Null";
+ //BA.debugLineNum = 287;BA.debugLine="Try";
+try { //BA.debugLineNum = 288;BA.debugLine="element.myInstance.RunMethod(\"removeView\",Null";
 _element.myInstance.RunMethod("removeView",(Object[])(anywheresoftware.b4a.keywords.Common.Null));
  } 
        catch (Exception e10) {
@@ -567,44 +463,44 @@ _element.myInstance.RunMethod("removeView",(Object[])(anywheresoftware.b4a.keywo
  };
  }
 };
- //BA.debugLineNum = 298;BA.debugLine="End Sub";
+ //BA.debugLineNum = 295;BA.debugLine="End Sub";
 return "";
 }
 public static String  _service_start(anywheresoftware.b4a.objects.IntentWrapper _startingintent) throws Exception{
- //BA.debugLineNum = 158;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
- //BA.debugLineNum = 160;BA.debugLine="If Starter.MYSERVICE=True Then";
+ //BA.debugLineNum = 155;BA.debugLine="Sub Service_Start (StartingIntent As Intent)";
+ //BA.debugLineNum = 157;BA.debugLine="If Starter.MYSERVICE=True Then";
 if (mostCurrent._starter._myservice==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 161;BA.debugLine="Init_elements";
+ //BA.debugLineNum = 158;BA.debugLine="Init_elements";
 _init_elements();
  };
- //BA.debugLineNum = 163;BA.debugLine="Log(\"oService Start!\")";
+ //BA.debugLineNum = 160;BA.debugLine="Log(\"oService Start!\")";
 anywheresoftware.b4a.keywords.Common.Log("oService Start!");
- //BA.debugLineNum = 165;BA.debugLine="End Sub";
+ //BA.debugLineNum = 162;BA.debugLine="End Sub";
 return "";
 }
 public static String  _sona() throws Exception{
- //BA.debugLineNum = 300;BA.debugLine="Sub Sona";
- //BA.debugLineNum = 302;BA.debugLine="End Sub";
+ //BA.debugLineNum = 297;BA.debugLine="Sub Sona";
+ //BA.debugLineNum = 299;BA.debugLine="End Sub";
 return "";
 }
 public static String  _t_tick() throws Exception{
- //BA.debugLineNum = 167;BA.debugLine="Sub  t_Tick";
- //BA.debugLineNum = 169;BA.debugLine="If Starter.MYSERVICE=True Then";
+ //BA.debugLineNum = 164;BA.debugLine="Sub  t_Tick";
+ //BA.debugLineNum = 166;BA.debugLine="If Starter.MYSERVICE=True Then";
 if (mostCurrent._starter._myservice==anywheresoftware.b4a.keywords.Common.True) { 
- //BA.debugLineNum = 170;BA.debugLine="CallSub(Me,\"NewPos\")";
+ //BA.debugLineNum = 167;BA.debugLine="CallSub(Me,\"NewPos\")";
 anywheresoftware.b4a.keywords.Common.CallSubNew(processBA,oservice.getObject(),"NewPos");
  }else {
- //BA.debugLineNum = 172;BA.debugLine="t.Enabled=False";
+ //BA.debugLineNum = 169;BA.debugLine="t.Enabled=False";
 _t.setEnabled(anywheresoftware.b4a.keywords.Common.False);
  };
- //BA.debugLineNum = 174;BA.debugLine="End Sub";
+ //BA.debugLineNum = 171;BA.debugLine="End Sub";
 return "";
 }
 public static String  _timdisplay_tick() throws Exception{
- //BA.debugLineNum = 273;BA.debugLine="Sub timDisplay_Tick";
- //BA.debugLineNum = 274;BA.debugLine="StopService(Me)";
+ //BA.debugLineNum = 270;BA.debugLine="Sub timDisplay_Tick";
+ //BA.debugLineNum = 271;BA.debugLine="StopService(Me)";
 anywheresoftware.b4a.keywords.Common.StopService(processBA,oservice.getObject());
- //BA.debugLineNum = 275;BA.debugLine="End Sub";
+ //BA.debugLineNum = 272;BA.debugLine="End Sub";
 return "";
 }
 
@@ -646,10 +542,11 @@ public class CustomImageView extends ImageView {
 				WindowManager.LayoutParams.TYPE_PHONE,//TYPE_SYSTEM_ALERT,
 				WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
 				PixelFormat.TRANSLUCENT);
-
-		params.gravity = Gravity.TOP | Gravity.LEFT;
+		
+		params.gravity = Gravity.TOP | Gravity.RIGHT;
 		params.x = 0;
-		params.y = 100;
+		params.y = 0;
+		params.windowAnimations = android.R.style.Animation_Toast;
 
 		windowManager.addView(this, params);
 
@@ -699,7 +596,7 @@ public class CustomImageView extends ImageView {
 					v.performClick();
 					
 					return true;
-				case MotionEvent.ACTION_MOVE:
+					case MotionEvent.ACTION_MOVE:
 				
 					if ( bPrimerTouch>0){
 					

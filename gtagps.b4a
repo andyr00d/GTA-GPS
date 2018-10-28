@@ -24,8 +24,8 @@ Library6=okhttputils2
 Library7=gps
 Library8=geocoder
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: http://www.basic4ppc.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="21"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>~\n~	~\n~<uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>	~\n~	)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'End of default text.~\n~'End of default text.~\n~AddApplicationText(<meta-data~\n~	android:name="com.google.android.gms.version"~\n~	android:value="@integer/google_play_services_version" />)~\n~	~\n~'	you must add one of these two permissions~\n~'	the permission you add will define the accuracy of location updates~\n~AddPermission(android.permission.ACCESS_FINE_LOCATION)~\n~'	AddPermission(android.permission.ACCESS_COARSE_LOCATION)~\n~~\n~~\n~'SetActivityAttribute(Transparent, android:theme, "@android:style/Theme.Translucent")
-Module1=Starter
-Module2=oService
+Module1=oService
+Module2=Starter
 NumberOfFiles=7
 NumberOfLibraries=8
 NumberOfModules=2
@@ -54,7 +54,7 @@ Sub Process_Globals
 
 	Dim Timer1 As Timer
 	
-	Private FusedLocationProvider1 As FusedLocationProvider
+	Dim FusedLocationProvider1 As FusedLocationProvider
 	Private LastLocation As Location
 
 	Dim Geocoder1 As Geocoder
@@ -65,26 +65,7 @@ End Sub
 Sub Globals
 	'These global variables will be redeclared each time the activity is created.
 	'These variables can only be accessed from this module.
-	Dim lblStars As Label
-	Dim RadioAdditional(3) As RadioButton
-	
-	Dim IVSnow(5) As ImageView
-	
-	Dim num_gifs_snow As Int=17
-	Dim bb_snow(num_gifs_snow) As Bitmap
-	Dim bb_snow_gray As Bitmap
-	Dim index_snow As Int=0
-	
-	Dim num_gifs_santa As Int=8
-	Dim bb_santa(num_gifs_santa) As Bitmap
-	Dim IV1 As ImageView
-	Dim index_santa As Int=0
 
-	
-	Dim num_gifs_skull As Int=12
-	Dim bb_skulls(num_gifs_skull) As Bitmap
-	Dim IV2 As ImageView
-	Dim index_skull As Int=0
 
 End Sub
 
@@ -101,7 +82,6 @@ Sub Activity_Create(FirstTime As Boolean)
 		Starter.ADDITIONAL=0
 		Starter.SOUND=False
 	End If
-
 '	
 '	Activity.Color=Colors.DarkGray
 '	
@@ -464,8 +444,6 @@ Sub Geocoder1_GeocodeDone(Results() As Address, Tag As Object)
 		strLocation = Address1.Locality
 		Starter.MYSERVICE=True
 		StartService(oService)
-'		Timer1.Initialize("Timer1",5000)
-'		Timer1.Enabled = True
 
 		Activity.Finish
 	Else
